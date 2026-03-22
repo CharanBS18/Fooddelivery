@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#531900",
+              "surface-container-highest": "#dadddf",
+              "on-tertiary-fixed-variant": "#5d2c00",
+              "secondary-container": "#a6f4b5",
+              "secondary-fixed": "#a6f4b5",
+              "inverse-on-surface": "#9b9d9e",
+              "secondary-dim": "#075c2c",
+              "on-primary-container": "#431300",
+              "on-primary-fixed": "#000000",
+              "primary-fixed": "#ff7940",
+              "surface-bright": "#f5f6f7",
+              "primary-fixed-dim": "#fa631b",
+              "on-tertiary": "#fff0e8",
+              "error": "#b31b25",
+              "tertiary": "#904800",
+              "on-secondary": "#cdffd3",
+              "on-surface-variant": "#595c5d",
+              "surface-tint": "#a23800",
+              "secondary": "#1b6937",
+              "on-secondary-fixed-variant": "#1b6937",
+              "primary": "#a23800",
+              "tertiary-dim": "#7e3e00",
+              "primary-container": "#ff7940",
+              "background": "#f5f6f7",
+              "surface-container-low": "#eff1f2",
+              "surface-dim": "#d1d5d7",
+              "surface-variant": "#dadddf",
+              "surface-container-lowest": "#ffffff",
+              "on-error-container": "#570008",
+              "surface": "#f5f6f7",
+              "primary-dim": "#8e3000",
+              "on-surface": "#2c2f30",
+              "surface-container-high": "#e0e3e4",
+              "tertiary-fixed": "#ff9742",
+              "on-primary": "#ffefeb",
+              "error-dim": "#9f0519",
+              "tertiary-container": "#ff9742",
+              "secondary-fixed-dim": "#99e6a8",
+              "on-error": "#ffefee",
+              "inverse-surface": "#0c0f10",
+              "on-secondary-fixed": "#004a21",
+              "inverse-primary": "#fd651e",
+              "surface-container": "#e6e8ea",
+              "error-container": "#fb5151",
+              "on-tertiary-container": "#4f2500",
+              "on-tertiary-fixed": "#2b1100",
+              "outline": "#757778",
+              "tertiary-fixed-dim": "#f08934",
+              "on-background": "#2c2f30",
+              "on-secondary-container": "#0b5e2e",
+              "outline-variant": "#abadae"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #ff7940 0%, #a23800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #ff7940 0%, #a23800 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm shadow-zinc-200/50">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black text-zinc-900 dark:text-zinc-50 tracking-tighter italic">
+                The Culinary Editorial
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-orange-600 dark:text-orange-400 font-bold border-b-2 border-orange-600" href="#">Discover</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-orange-600 transition-colors" href="#">Restaurants</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-orange-600 transition-colors" href="#">Offers</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:text-orange-600 transition-colors" href="#">Recipes</a>
+</div>
+<div class="flex items-center gap-4">
+<button id="cart-btn" class="relative text-zinc-900 dark:text-zinc-100 p-2 hover:bg-zinc-100 rounded-full transition-colors flex items-center justify-center mr-2">
+    <span class="material-symbols-outlined text-[28px]">shopping_cart</span>
+    <span id="cart-count" class="hidden absolute top-0 right-0 bg-primary/90 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">0</span>
+</button>
+<button class="text-zinc-900 dark:text-zinc-100 font-bold tracking-tight scale-95 active:scale-90 transition-transform hover:opacity-90">Sign In</button>
+<button class="bg-primary-gradient text-on-primary px-6 py-2.5 rounded-full font-bold shadow-lg shadow-primary/20 scale-95 active:scale-90 transition-transform">Join Now</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full text-sm font-bold tracking-wide uppercase">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    Michelin Standard Delivery
+                </div>
+<h1 class="font-headline font-extrabold text-6xl md:text-8xl leading-[1.1] tracking-tight text-on-surface">
+                    Craving it? <br/>
+<span class="text-gradient">Get it delivered.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-lg leading-relaxed">
+                    Experience the city's finest culinary masterpieces delivered to your doorstep with editorial precision and speed.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary-gradient text-on-primary px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/30 hover:scale-105 active:scale-95 transition-all">
+                        Order Now
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-10 py-4 rounded-full font-bold text-lg hover:bg-surface-container-high transition-colors">
+                        Explore Menu
+                    </button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary-container/20 blur-[100px] rounded-full"></div>
+<img alt="Gourmet Burger" class="w-full h-auto object-contain rounded-xl drop-shadow-[0_35px_35px_rgba(162,56,0,0.3)] hover:rotate-3 transition-transform duration-700" data-alt="Premium dynamic gourmet burger with fresh ingredients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0r62WVnby9us7cdgMgSFAavEUPw-3Wv_EPNRaVRwo8fE78XeVHMAwEu2IB4BX3h2nBtgCWcDmPz3chXxinGx6oqEW8m2i5yFbbPFhSnSneqNJ_mxmiJXDe4dJbRLFAEmYQ3sON7yjwTPtl2iVFwNBwHybDsajSkoWj4E0Ogz41X5Mv-DYmoWPGyBCReNdtnnWG-i0ivh-9Dm3xMZ0KTaDdbfElC0dptyW6c8s4bVcY9IJOYYvmCIO1_ai7ACNCnSOK6i_FF_H5OI"/>
+</div>
+</section>
+<!-- Popular Categories: Horizontal Asymmetric Grid -->
+<section class="py-20 bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-secondary font-bold uppercase tracking-widest text-sm block mb-2">Curated Collections</span>
+<h2 class="font-headline font-bold text-4xl">Popular Categories</h2>
+</div>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar">
+<!-- Category: Pizza -->
+<div class="flex-none w-48 snap-center group">
+<div class="bg-surface-container-lowest p-6 rounded-full flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 group-hover:-translate-y-2">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface">
+<img alt="Pizza" class="w-full h-full object-cover" data-alt="Top down view of a fresh artisanal pizza" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMIhBA_fZWmsX4xn15VwEIj-0lPaZWmo4pX6O3LqsjX_rpPiS9uVnXHC3S9kpnk8dXvsUD5Bp2FZW3J_B9hepxpZdG4Ge7XccpkqrnEM5ZpedX01kF1phDOF6SydowjITkfxwMqWbMpf8KnRIYJSop1iDCPh9RN8K1ug1vLUaBAhPwQNuFwmTcFMITuig6uT4HCpaY8Ii_5fk87Uwl69Taya-IlHFOHiYJ1Zc_4cBDSZhhug4yWX0TmwD9m3nOyylYBDbYR_HLw5E"/>
+</div>
+<span class="font-bold text-lg">Pizza</span>
+</div>
+</div>
+<!-- Category: Sushi -->
+<div class="flex-none w-48 snap-center group">
+<div class="bg-surface-container-lowest p-6 rounded-full flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 group-hover:-translate-y-2">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface">
+<img alt="Sushi" class="w-full h-full object-cover" data-alt="Exquisite platter of fresh nigiri sushi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGvAb7oX8xT8NrtsZPM_2br2tI3WWB9PHXPmzjG8fuE6TOQp37QDQ3muF4kfLFGoNKI98rvRgDuSE0ESp7A264RcjxCSR-kM5ikyFg_l6HWMdRzvTEwXJe4obSWdifiLjbkc2DPHac901A-zfstlrPZgFrLXOX3BFS5HZIIcOCi7s0qfWuuty3_Cq4Iv4U-WV7Yu_qQnjStQQBZR0-6yZalF7_K18l-lI8e2hb4SWG1geiNBGPeJtGTe0pKYPMRK0YkLe6qZeuKSM"/>
+</div>
+<span class="font-bold text-lg">Sushi</span>
+</div>
+</div>
+<!-- Category: Burgers -->
+<div class="flex-none w-48 snap-center group">
+<div class="bg-surface-container-lowest p-6 rounded-full flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 group-hover:-translate-y-2">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface">
+<img alt="Burgers" class="w-full h-full object-cover" data-alt="Juicy stacked cheeseburger on a brioche bun" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJGDpKcrT3K9vub8zuP5LeBBQb78wbHNnr0u7dEtoEHzeTY8yV54E8I4QWWRIIsvfjfR4yWjUjpzKjV20IWc0yymfnyjSjJJIPtJUY3TEU2CphwG4ni3l8ZmZMR4Mrd3yFeTvyTxHfUNJUuGUZT9-yWpKe9IFQHr0qDPe0yeBQceSCjfQvCd_GdfGcAOTfGWJEzw0Mpzq4L3zml5PzAzP74pIK02d_9uqs8yy_3R5kO-6iXFCadiksZXhm9fri6wEsotfLlTmu2mA"/>
+</div>
+<span class="font-bold text-lg">Burgers</span>
+</div>
+</div>
+<!-- Category: Healthy -->
+<div class="flex-none w-48 snap-center group">
+<div class="bg-surface-container-lowest p-6 rounded-full flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 group-hover:-translate-y-2">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface">
+<img alt="Healthy" class="w-full h-full object-cover" data-alt="Colorful vibrant vegetable Buddha bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvFcZ6_UU1rSg8HJdGBOyQstNGpxnX4Q2ABkFmUMzAThn3MBoBVHPSVFAJ4CCKyL9iUc4nKcWCIn_l87LYh60WqiCv7yauy04qFSIgjLehf3JASXP9UfYShUgAcLPxfIQ3Ywokk567bTFVo85aZZxVitmfQ6yp7-yczX4Z9ZT8qm6DTmcSWENctjUcp4TaMFr3xQvDpEXGhmrKKEtOtDt481Fo3nEJ9AQH5Tp1GkiQwcUBxQUooE0qt-kLOKDx08asqsD5ViX6_RQ"/>
+</div>
+<span class="font-bold text-lg">Healthy</span>
+</div>
+</div>
+<!-- Category: Desserts -->
+<div class="flex-none w-48 snap-center group">
+<div class="bg-surface-container-lowest p-6 rounded-full flex flex-col items-center gap-4 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 group-hover:-translate-y-2">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface">
+<img alt="Desserts" class="w-full h-full object-cover" data-alt="Decadent chocolate dessert with berries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgKqNKAUJ-3iumZeGAhORWBHOY_4qvNZ7bsaH4ViRglWccPVB5nHiKcquGY3ODEZPkXxeMMIfFaXST-9_6Krk0E5ccEoveISnL9dpm4FCatB6w3mb7rZrxnOMPUPo69_P2xN__4ExiGNvTQDGTHVnvNcldKvB1ALJmATrIeOfP_ZmKQu5ExC2SoEtFwzFbCYKGGeSuIzolqbX8Ig4D3siRXgENT-kWTnse9RVf0zURwBBOzHp_a9LaV1Dc18V22IQn80KBoOXR7o0"/>
+</div>
+<span class="font-bold text-lg">Desserts</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features / How it Works Section -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="text-center max-w-2xl mx-auto mb-20">
+<h2 class="font-headline font-bold text-4xl mb-6">Mastering the Art of Delivery</h2>
+<p class="text-on-surface-variant">We've refined every step of the process to ensure your meal arrives exactly as the chef intended.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="glass-card p-10 rounded-lg border border-white/20 shadow-lg shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500 group">
+<div class="w-16 h-16 rounded-2xl bg-primary-container/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<h3 class="font-headline font-bold text-2xl mb-4">Choose your favorite</h3>
+<p class="text-on-surface-variant leading-relaxed">Browse our curated list of elite restaurants and exclusive seasonal menus.</p>
+</div>
+<!-- Feature 2 -->
+<div class="glass-card p-10 rounded-lg border border-white/20 shadow-lg shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500 group">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<h3 class="font-headline font-bold text-2xl mb-4">Fast Delivery</h3>
+<p class="text-on-surface-variant leading-relaxed">Our fleet prioritize precision logistics to maintain optimal serving temperatures.</p>
+</div>
+<!-- Feature 3 -->
+<div class="glass-card p-10 rounded-lg border border-white/20 shadow-lg shadow-zinc-200/50 hover:shadow-2xl transition-all duration-500 group">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'FILL' 1;">local_dining</span>
+</div>
+<h3 class="font-headline font-bold text-2xl mb-4">Enjoy your meal</h3>
+<p class="text-on-surface-variant leading-relaxed">Unbox a restaurant-quality experience in the comfort of your own home.</p>
+</div>
+</div>
+</section>
+
+<!-- Featured Menu Section -->
+<section class="max-w-7xl mx-auto px-8 pb-24">
+    <div class="flex justify-between items-end mb-12">
+        <div>
+            <span class="text-primary font-bold uppercase tracking-widest text-sm block mb-2">Chef's Selection</span>
+            <h2 class="font-headline font-bold text-4xl text-zinc-900">Featured Menu</h2>
+        </div>
+    </div>
+    <div id="featured-menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered via JS -->
+    </div>
+</section>
+
+<!-- CTA Section: Bento Style -->
+<section class="max-w-7xl mx-auto px-8 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[500px]">
+<div class="md:col-span-8 bg-zinc-900 rounded-lg p-12 flex flex-col justify-end relative overflow-hidden text-white">
+<img alt="Table" class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105 hover:scale-100 transition-transform duration-[2s]" data-alt="Beautifully set dining table with various gourmet dishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATXFvM4w-8a9Y6SHZSklknsojGUnMbnAVN4SibndTOR0ktegN5d0ev8YRBWXpayA1K3ld4hpWy2koiBb3kKxNUcMHfmUDniEJNHj8XizxwyyUvAi-pc6qFFIRtB_XNtt2SBSd0jg5PkVhdqA2lo6CIy0o-OaF0NSQqWbfoVR-STxBHG8o3NMJDlrDbd7-uculOxAptDRjJXf7dsH41i7vIMzArx0kd9q_UNws_yz8dnC_BiWcXagXp8_1UxQ4DPkM5nKgzZO1_4oQ"/>
+<div class="relative z-10">
+<h2 class="font-headline font-bold text-5xl mb-4">The Kitchen is Calling</h2>
+<p class="text-zinc-300 max-w-md text-lg mb-8">Join over 50,000 connoisseurs who have upgraded their dining habits.</p>
+<button class="bg-primary-gradient text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform">Explore All Restaurants</button>
+</div>
+</div>
+<div class="md:col-span-4 bg-secondary-container rounded-lg p-12 flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6">workspace_premium</span>
+<h3 class="font-headline font-bold text-3xl text-on-secondary-container mb-2">Partner with Us</h3>
+<p class="text-on-secondary-container/80">Grow your restaurant with our elite logistics network.</p>
+</div>
+<button class="w-fit text-on-secondary-container font-bold border-b-2 border-on-secondary-container mt-8 group">
+                        Get Started <span class="inline-block group-hover:translate-x-1 transition-transform">→</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 mt-20 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-emerald-900 dark:text-emerald-200 mb-4">
+                    The Culinary Editorial
+                </div>
+<p class="font-['Inter'] text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    © 2024 The Culinary Editorial. Crafted for Connoisseurs.
+                </p>
+<div class="flex gap-4 mt-6">
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary transition-colors cursor-pointer">social_leaderboard</span>
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary transition-colors cursor-pointer">terminal</span>
+<span class="material-symbols-outlined text-zinc-400 hover:text-primary transition-colors cursor-pointer">camera</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 col-span-1 md:col-span-3 gap-8">
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-zinc-900 dark:text-zinc-100 mb-2">About</h4>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Careers</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Press Kit</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-zinc-900 dark:text-zinc-100 mb-2">Partner</h4>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Partner with Us</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Courier Central</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Store Dashboard</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold text-zinc-900 dark:text-zinc-100 mb-2">Legal</h4>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 transition-colors hover:translate-x-1 duration-200" href="#">Cookie Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Cart Overlay -->
+<div id="cart-overlay" class="fixed inset-0 bg-zinc-900/40 backdrop-blur-[2px] z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<!-- Cart Slide-over -->
+<div id="cart-slideover" class="fixed top-0 right-0 h-full w-full sm:w-[400px] max-w-full bg-white shadow-2xl z-50 translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col rounded-l-3xl">
+    <div class="px-6 py-6 border-b border-zinc-100 flex items-center justify-between">
+        <h2 class="font-headline font-bold text-2xl flex items-center gap-2 text-zinc-900">
+            <span class="material-symbols-outlined text-primary">shopping_bag</span>
+            Your Cart
+        </h2>
+        <button id="close-cart-btn" class="p-2 hover:bg-zinc-100 rounded-full transition-colors flex items-center justify-center text-zinc-500 hover:text-zinc-900">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+    
+    <!-- Cart Items -->
+    <div id="cart-items-container" class="flex-grow overflow-y-auto p-6 flex flex-col gap-4">
+        <!-- Rendered via JS -->
+    </div>
+    
+    <!-- Checkout Footer -->
+    <div class="border-t border-zinc-100 p-6 bg-zinc-50 rounded-bl-3xl">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-zinc-500 font-medium text-lg">Subtotal</span>
+            <span id="cart-total" class="font-headline font-bold text-3xl text-zinc-900">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="w-full bg-primary-gradient text-white py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-primary/30 active:scale-95 transition-all flex justify-center items-center gap-2">
+            Proceed to Checkout
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </button>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body></html>
