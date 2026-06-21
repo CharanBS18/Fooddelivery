@@ -141,9 +141,71 @@
                     </button>
 </div>
 </div>
-<div class="relative">
-<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary-container/20 blur-[100px] rounded-full"></div>
-<img alt="Gourmet Burger" class="w-full h-auto object-contain rounded-xl drop-shadow-[0_35px_35px_rgba(162,56,0,0.3)] hover:rotate-3 transition-transform duration-700" data-alt="Premium dynamic gourmet burger with fresh ingredients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0r62WVnby9us7cdgMgSFAavEUPw-3Wv_EPNRaVRwo8fE78XeVHMAwEu2IB4BX3h2nBtgCWcDmPz3chXxinGx6oqEW8m2i5yFbbPFhSnSneqNJ_mxmiJXDe4dJbRLFAEmYQ3sON7yjwTPtl2iVFwNBwHybDsajSkoWj4E0Ogz41X5Mv-DYmoWPGyBCReNdtnnWG-i0ivh-9Dm3xMZ0KTaDdbfElC0dptyW6c8s4bVcY9IJOYYvmCIO1_ai7ACNCnSOK6i_FF_H5OI"/>
+<div id="hero-stack-interactor" class="relative">
+<div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-primary-container/20 blur-[120px] rounded-full"></div>
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-10 items-center">
+<ul id="hero-stack-menu" class="space-y-7">
+<li>
+<button data-index="0" class="hero-stack-item group w-full text-left flex items-start gap-3 transition-all duration-500">
+<span class="hero-stack-num text-2xl font-bold text-orange-500 scale-110 transition-all duration-500">01</span>
+<span class="hero-stack-title text-4xl md:text-5xl font-black leading-[0.86] tracking-tight text-zinc-950 transition-all duration-500 translate-x-2">
+                                Gourmet<br/>Burgers
+                            </span>
+</button>
+</li>
+<li>
+<button data-index="1" class="hero-stack-item group w-full text-left flex items-start gap-3 transition-all duration-500">
+<span class="hero-stack-num text-2xl font-bold text-zinc-400 transition-all duration-500">02</span>
+<span class="hero-stack-title text-4xl md:text-5xl font-black leading-[0.86] tracking-tight text-zinc-500 opacity-50 transition-all duration-500">
+                                Fresh<br/>Desserts
+                            </span>
+</button>
+</li>
+<li>
+<button data-index="2" class="hero-stack-item group w-full text-left flex items-start gap-3 transition-all duration-500">
+<span class="hero-stack-num text-2xl font-bold text-zinc-400 transition-all duration-500">03</span>
+<span class="hero-stack-title text-4xl md:text-5xl font-black leading-[0.86] tracking-tight text-zinc-500 opacity-50 transition-all duration-500">
+                                Artisan<br/>Waffles
+                            </span>
+</button>
+</li>
+</ul>
+<svg viewBox="0 0 500 500" class="w-full max-w-[760px] h-auto z-10 drop-shadow-[0_35px_35px_rgba(162,56,0,0.3)]">
+<defs>
+<clipPath id="clip-original">
+<path class="stack-path" d="M480.6,235H19.4c-6,0-10.8-4.9-10.8-10.8v-9.5c0-6,4.9-10.8,10.8-10.8h461.1c6,0,10.8,4.9,10.8,10.8v9.5C491.4,230.2,486.6,235,480.6,235z"></path>
+<path class="stack-path" d="M483.1,362.4H16.9c-4.6,0-8.3-3.7-8.3-8.3v-1.8c0-4.6,3.7-8.3,8.3-8.3h466.1c4.6,0,8.3,3.7,8.3,8.3v1.8C491.4,358.7,487.7,362.4,483.1,362.4z"></path>
+<path class="stack-path" d="M460.3,336.3H39.7c-17.2,0-31.1-13.9-31.1-31.1v-31.5c0-17.2,13.9-31.1,31.1-31.1h420.7c17.2,0,31.1,13.9,31.1,31.1v31.5C491.4,322.4,477.5,336.3,460.3,336.3z"></path>
+<path class="stack-path" d="M459.2,196.2H40.8v-35c0-47.5,38.5-86,86-86h246.5c47.5,0,86,38.5,86,86V196.2z"></path>
+<path class="stack-path" d="M441.9,424.9H58.1c-9.6,0-17.3-7.8-17.3-17.3v-37.4h418.5v37.4C459.2,417.1,451.5,424.9,441.9,424.9z"></path>
+</clipPath>
+
+<clipPath id="clip-hexagons">
+<rect class="stack-path" x="20" y="20" width="200" height="280" rx="12"></rect>
+<rect class="stack-path" x="20" y="320" width="200" height="160" rx="12"></rect>
+<rect class="stack-path" x="240" y="20" width="240" height="140" rx="12"></rect>
+<rect class="stack-path" x="240" y="180" width="110" height="160" rx="12"></rect>
+<rect class="stack-path" x="370" y="180" width="110" height="160" rx="12"></rect>
+<rect class="stack-path" x="240" y="360" width="240" height="120" rx="12"></rect>
+</clipPath>
+
+<clipPath id="clip-pixels">
+<rect class="stack-path" x="20" y="20" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="180" y="20" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="340" y="20" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="20" y="180" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="180" y="180" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="340" y="180" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="20" y="340" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="180" y="340" width="140" height="140" rx="4"></rect>
+<rect class="stack-path" x="340" y="340" width="140" height="140" rx="4"></rect>
+</clipPath>
+</defs>
+<g id="hero-stack-group" clip-path="url(#clip-original)">
+<image id="hero-stack-image" href="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" width="500" height="500" preserveAspectRatio="xMidYMid slice"></image>
+</g>
+</svg>
+</div>
 </div>
 </section>
 <!-- Popular Categories: Horizontal Asymmetric Grid -->
@@ -348,5 +410,6 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="main.js"></script>
 </body></html>

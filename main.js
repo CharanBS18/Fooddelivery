@@ -12,12 +12,120 @@ let cart = [];
 function initApp() {
     renderMenu();
     updateCartIcon();
+    initHeroStackInteractor();
     
     // Bind cart toggle
     document.getElementById('cart-btn').addEventListener('click', toggleCart);
     document.getElementById('close-cart-btn').addEventListener('click', toggleCart);
     document.getElementById('checkout-btn').addEventListener('click', checkout);
     document.getElementById('cart-overlay').addEventListener('click', toggleCart);
+}
+
+function initHeroStackInteractor() {
+    const container = document.getElementById('hero-stack-interactor');
+    if (!container || typeof window.gsap === 'undefined') return;
+
+    const items = [
+        {
+            clipId: 'clip-original',
+            image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        },
+        {
+            clipId: 'clip-hexagons',
+            image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        },
+        {
+            clipId: 'clip-pixels',
+            image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+        },
+    ];
+
+    const stackImage = document.getElementById('hero-stack-image');
+    const stackGroup = document.getElementById('hero-stack-group');
+    const stackButtons = Array.from(container.querySelectorAll('.hero-stack-item'));
+    const stackNums = Array.from(container.querySelectorAll('.hero-stack-num'));
+    const stackTitles = Array.from(container.querySelectorAll('.hero-stack-title'));
+    const gsap = window.gsap;
+
+    let activeIndex = 0;
+    let masterTimeline = null;
+    let hoverSwitchTimer = null;
+
+    const updateActiveStyles = (index) => {
+        stackNums.forEach((numEl, i) => {
+            numEl.classList.remove('text-orange-500', 'scale-110', 'text-zinc-400');
+            numEl.classList.add(i === index ? 'text-orange-500' : 'text-zinc-400');
+            if (i === index) numEl.classList.add('scale-110');
+        });
+
+        stackTitles.forEach((titleEl, i) => {
+            titleEl.classList.remove('text-zinc-950', 'opacity-100', 'translate-x-2', 'text-zinc-500', 'opacity-50');
+            if (i === index) {
+                titleEl.classList.add('text-zinc-950', 'opacity-100', 'translate-x-2');
+            } else {
+                titleEl.classList.add('text-zinc-500', 'opacity-50');
+            }
+        });
+    };
+
+    const createLoop = (index) => {
+        const item = items[index];
+        const selector = `#${item.clipId} .stack-path`;
+
+        if (masterTimeline) masterTimeline.kill();
+        gsap.killTweensOf(selector);
+        stackImage?.setAttribute('href', item.image);
+        stackGroup?.setAttribute('clip-path', `url(#${item.clipId})`);
+
+        gsap.set(selector, {
+            scale: 0.001,
+            transformOrigin: '50% 50%',
+            willChange: 'transform',
+            transformPerspective: 400,
+        });
+
+        // Lighter loop: reveal once, then subtle pulse. This avoids expensive full redraw cycles.
+        const timeline = gsap.timeline({ repeat: -1, repeatDelay: 0.35 });
+        timeline
+            .to(selector, {
+                scale: 1,
+                duration: 0.55,
+                stagger: { amount: 0.2, from: 'center' },
+                ease: 'power3.out',
+                force3D: true,
+            })
+            .to(selector, {
+                scale: 1.025,
+                duration: 1.1,
+                yoyo: true,
+                repeat: 3,
+                ease: 'sine.inOut',
+                stagger: { amount: 0.14, from: 'center' },
+                force3D: true,
+            });
+
+        masterTimeline = timeline;
+    };
+
+    const switchTo = (index) => {
+        if (activeIndex === index) return;
+        activeIndex = index;
+        updateActiveStyles(index);
+        createLoop(index);
+    };
+
+    stackButtons.forEach((buttonEl, index) => {
+        buttonEl.addEventListener('mouseenter', () => {
+            clearTimeout(hoverSwitchTimer);
+            hoverSwitchTimer = setTimeout(() => switchTo(index), 70);
+        });
+        buttonEl.addEventListener('focus', () => {
+            switchTo(index);
+        });
+    });
+
+    updateActiveStyles(0);
+    createLoop(0);
 }
 
 function renderMenu() {
